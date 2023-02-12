@@ -1,0 +1,14 @@
+{
+  "name": "ChatGPT window",
+  "version": "1.0.0",
+  "description": "ChatGPT window",
+  "main": "main.js",
+  "scripts": {
+    "build-win32": "electron-packager . ChatGPT-Window --platform=win32 --arch=x64 --electron-version=8.0.0",
+    "build-darwin": "electron-packager . ChatGPT-Window --platform=darwin --arch=x64 --electron-version=8.0.0",
+    "build-linux": "electron-packager . ChatGPT-Window --platform=linux --arch=x64 --electron-version=8.0.0"
+  },
+  "author": "Elias Bachaalany",
+  "license": "ISC"
+}
+
