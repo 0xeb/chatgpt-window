@@ -6,13 +6,14 @@ const fileName = path.join(app.getPath('userData'), 'options.json');
 const default_options = {
   version: 1,
   hotkey : 'Command+Shift+K',
-  hotkey2: 'Command+,',
+  hotkey2: 'Control+,',
   windowBounds : {
     width: 800,
     height: 600
   }
 };
 
+// console.log(fileName);
 
 let mainWindow;
 let options = {...default_options};
@@ -91,8 +92,12 @@ function setupUI()
 }
 
 function saveOptions() {
-  options.windowBounds = mainWindow.getBounds(); 
-  fs.writeFileSync(fileName, JSON.stringify(options), 'utf-8');
+  try {
+    options.windowBounds = mainWindow.getBounds(); 
+    fs.writeFileSync(fileName, JSON.stringify(options), 'utf-8');
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function loadOptions() {
@@ -153,7 +158,8 @@ app.on('ready', () => {
     globalShortcut.unregisterAll();
   });
 
-  app.on('before-quit', () => {
+  
+  mainWindow.on('close', (event) => {
     saveOptions();
   });
 

@@ -1,0 +1,1 @@
+ChatGPT window is a small tool that embeds the ChatGPT UI.
